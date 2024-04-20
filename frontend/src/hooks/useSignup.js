@@ -28,7 +28,7 @@ const useSignup = () => {
         setLoading(false);
     }
   }
-  return {loading, signup};
+  return { loading, signup };
 }
 
 export default useSignup
