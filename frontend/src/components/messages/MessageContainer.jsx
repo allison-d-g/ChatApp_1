@@ -5,10 +5,10 @@ import { TiMessages } from "react-icons/ti";
 
 // this generate the input bar at the bottom
 const MessageContainer = () => {
-  const NoChatSelected = true;
+  const noChatSelected = true;
   return (
     <div className='md:min-w-[450px] flex flex-col'>
-        {NoChatSelected ? (<NoChatSelected />) : (
+        {noChatSelected ? (<NoChatSelected />) : (
           <>
           {/* Header */}
           <div className='bg-slate-500 px-4 py-2 mb-2'>

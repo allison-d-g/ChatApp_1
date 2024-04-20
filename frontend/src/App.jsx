@@ -15,6 +15,8 @@ function App() {
 		<div className='p-4 h-screen flex items-center justify-center'>
 			{/* <Login /> */}
 			<Home />
+			{/* <Signup /> */}
+			{/* <h1>Hi</h1> */}
 
 		</div>
 	);
