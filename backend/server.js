@@ -13,6 +13,7 @@ import {app, server} from './socket/socket.js'
 // const app = express();
 const PORT = process.env.PORT || 3300;
 
+const _dirname = path.resolve() //deploy
 
 dotenv.config();
 
@@ -22,6 +23,12 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+
+app.use(express.static(path.join(_dirname, "/frontend/dist")))
+
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 // app.get("/", (req,res) => {
 //     //root route http://localhost:3300/
