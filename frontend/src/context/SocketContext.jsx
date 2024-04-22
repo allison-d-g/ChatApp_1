@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authUser) {
-			const socket = io("https://localhost:3300", {
+			const socket = io("https://working-version.d8besgu54hzd9.amplifyapp.com", {
                 query:{
                     userId: authUser._id,
                 }
