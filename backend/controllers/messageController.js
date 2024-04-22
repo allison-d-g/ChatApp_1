@@ -1,6 +1,7 @@
 import Conversation from "../Info/conversation.js";
 import Message from "../Info/message.js";
 import mongoose from "mongoose";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage = async (req,res) =>{
     try {
@@ -36,6 +37,13 @@ export const sendMessage = async (req,res) =>{
 
         //this will make the two run in parallel
         await Promise.all([conversation.save(), newMessage.save()]);
+
+        //socket io functionality
+        const receiverSocketId = getReceiverSocketId(receiverId);
+		if (receiverSocketId) {
+			// io.to(<socket_id>).emit() used to send events to specific client
+			io.to(receiverSocketId).emit("newMessage", newMessage);
+		}
 
         res.status(201).json(newMessage);
     } catch (error) {

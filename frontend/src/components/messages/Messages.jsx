@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import Message from './Message'
 import useGetMessages from '../../hooks/useGetMessages'
 import MessageSkeleton from "../skeletons/MessageSkeleton";
+import useListenMessages from '../../hooks/useListenConversation';
 
 const Messages = () => {
   const {messages, loading} = useGetMessages();
-
+  useListenMessages()
   //the scroll bar auto roll to the last message position
   const lastMessage = useRef()
 
